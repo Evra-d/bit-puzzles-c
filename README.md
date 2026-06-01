@@ -11,6 +11,3 @@ To deeply understand how the CPU works, I am restricting myself from using:
 * `if`, `else`, `loops` (`for`, `while`), or `switch`.
 * Macros or function calls.
 * Only bitwise operators (`&`, `|`, `~`, `^`, `<<`, `>>`) and basic math (`+`, `-`) are allowed in core solutions.
-
-## 🛠️ How to Compile & Run
-I created a simple Makefile to automate testing my functions as I write them.
