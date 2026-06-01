@@ -24,7 +24,7 @@ int is_little_endian() {
     return *start;
 }
 
-/* *Solution for CS:APP Exercise 2.58
+/* *Solution for CS:APP Exercise 2.59
  * @brief Merge different part of variable x and y
  * Function : merge_x_y
  * @return the value a word consisting of the LSB of x and the other byte of y
@@ -38,6 +38,18 @@ int merge_x_y(int x, int y){
     
     //We could've alse use x + y
     return x | y;
+}
+
+/* *Solution for CS:APP Exercise 2.60
+ * @brief Replace byte of x by b. Starting to count the LSB to be the index 0
+ * Function : replace_byte
+ * @return the value of x replace by some byte of b
+ */
+unsigned replace_byte (unsigned x, int i, unsigned char b){
+    int c;
+    x = x & ~( 0xFF << ( 8 * i ) ); //initialise the i byte of x to 0
+    c = b << (8 * i);//shifting the i byte of x to the i position
+    return x | c; // combine all
 }
 
 /* Solution for CS:APP Exercice 2.61-A
@@ -81,4 +93,17 @@ int MSB_bit_of_x_0(int x){
     //And & 0xFF for avoiding the case where right shifting is donne arithmetically and the bit sign is 1
     x = ( x >> ((sizeof(int) << 3) - 8) ) & 0xFF;
     return !(!(~x));
+}
+
+/* * Solution for CS:APP Exercise 2.62
+ * @brief Determine if the machine use arithmetic right shifts for int’s.
+ * @return 1 if the machine uses arithmetic right shifts, 0 if not.
+ */
+int int_shifts_are_arithmetic(){
+    //Let's take x = -1 which is 111111111111...111 in binary using two complement
+    int x = -1;
+    
+    //Then we shift x to get rid of all the actual bit. Then we test if the new value of x has any 1 or 0 using the precedding logic of functions any_bit_of_x_0(int)
+    x = x >> ( (sizeof(int) << 3) - 1 );
+    return !(~x);
 }
