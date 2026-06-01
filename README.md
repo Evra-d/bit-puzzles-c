@@ -14,7 +14,3 @@ To deeply understand how the CPU works, I am restricting myself from using:
 
 ## 🛠️ How to Compile & Run
 I created a simple Makefile to automate testing my functions as I write them.
-
-```bash
-make
-./test
