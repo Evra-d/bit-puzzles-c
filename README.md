@@ -11,3 +11,8 @@ To deeply understand how the CPU works, I am restricting myself from using:
 * `if`, `else`, `loops` (`for`, `while`), or `switch`.
 * Macros or function calls.
 * Only bitwise operators (`&`, `|`, `~`, `^`, `<<`, `>>`) and basic math (`+`, `-`) are allowed in core solutions.
+
+## 📚 Context & Credits
+These puzzles are my personal solutions to the Homework Problems from Chapter 2 of the textbook **"Computer Systems: A Programmer's Perspective" (CS:APP)** by Bryant and O'Hallaron. 
+
+The goal is to solve these textbook challenges to strengthen my understanding of low-level data representation.
