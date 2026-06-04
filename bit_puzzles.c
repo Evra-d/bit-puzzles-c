@@ -100,3 +100,18 @@ int int_shifts_are_arithmetic(){
     x = x >> ( (sizeof(int) << 3) - 1 );
     return !(~x);
 }
+
+/* *Solution for CS:APP Exercise 2.63
+ * @brief Perform a logical shift using an arithmetical shift result
+ * return the value of the logical shift performed
+ */
+unsigned srl(unsigned x, int k) {
+    /* Perform shift arithmetically */
+    unsigned xsra = (int) x >> k;
+    int x = -1 // x = 0b1111...11111
+    int xshift = (sizeof(int) << 3) - k;
+    x = x << xshift;
+
+    return (unsigned) xsra & ~x;
+
+}

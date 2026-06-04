@@ -15,4 +15,4 @@ To deeply understand how the CPU works, I am restricting myself from using:
 ## 📚 Context & Credits
 These puzzles are my personal solutions to the Homework Problems from Chapter 2 of the textbook **"Computer Systems: A Programmer's Perspective" (CS:APP)** by Bryant and O'Hallaron. 
 
-The goal is to solve these textbook challenges to strengthen my understanding of low-level data representation.
+The goal is to solve these textbook challenges to strengthen my understanding of low-level data representation. And I would like you to be able to help me improve these codes.
