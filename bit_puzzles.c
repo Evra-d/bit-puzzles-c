@@ -108,10 +108,23 @@ int int_shifts_are_arithmetic(){
 unsigned srl(unsigned x, int k) {
     /* Perform shift arithmetically */
     unsigned xsra = (int) x >> k;
-    int x = -1 // x = 0b1111...11111
-    int xshift = (sizeof(int) << 3) - k;
-    x = x << xshift;
+    int y = -1 // y = 0b1111...11111
+    int xshift = (sizeof(int) << 3) - 1 - k;
+    y = y << xshift;
 
-    return (unsigned) xsra & ~x;
+    return (unsigned) xsra & ~y;
 
+}
+
+int sra(int x, int k) {
+    /* Perform shift logically */ 
+    int xsrl = (unsigned) x >> k;
+    int size = sizeof(int) << 3;
+    int y = xsrl << k;
+
+    int signBit = y & (1 << (size-1)); //Get the sign bit
+    signBit = (~( !(!signBit) ) + 1) & (~0 << 1); //Extend the bit sign
+    int mask = (~ !(!k) + 1) & ( signBit << (size-k) << 1 ); //Preparing the case where k = 0
+
+    return xsrl | mask;
 }
