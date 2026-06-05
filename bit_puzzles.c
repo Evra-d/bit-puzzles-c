@@ -128,3 +128,15 @@ int sra(int x, int k) {
 
     return xsrl | mask;
 }
+
+/* *Solution for CS:APP Exercice 2.64
+ * @brief Check if any off bit of x is 1
+ * return 1 if any odd bit of x is 1, and 0 if not
+ */
+int any_odd_one(unsigned x){
+    //Assuming that sizeof(int)<<3 = 32
+    //Without knowing the value of the type int , we could've mask with the value 2**0 + 2**2 + ... + 2**30 = (2**32 - 1)/3
+    int mask = 0xAAAAAAAA;
+
+    return !!(x & mask);
+}
