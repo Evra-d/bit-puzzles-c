@@ -130,7 +130,7 @@ int sra(int x, int k) {
 }
 
 /* *Solution for CS:APP Exercice 2.64
- * @brief Check if any off bit of x is 1
+ * @brief Check if any of odd bit of x is 1
  * return 1 if any odd bit of x is 1, and 0 if not
  */
 int any_odd_one(unsigned x){
@@ -139,4 +139,33 @@ int any_odd_one(unsigned x){
     int mask = 0xAAAAAAAA;
 
     return !!(x & mask);
+}
+
+/* *Solution for CS:APP Exercice 2.65
+ * @brief Check if x has odd number of 1 in binary
+ * Return 1 when x contains an odd number of 1s; 0 otherwise.
+    Assume w=32. 
+
+ * Logic of what I suggest: I try to XOR bits one another. For instance : if i have x = 0b11001 on 5 bits. Then to determine if there's odd number of 1 I will make 1^1^0^0^1
+ * Since the XOR operation is commutative , then I cut int the middle, then apply the XOR operator between the left and the right parts.An do it recursively.
+ * 
+*/
+int odd_ones(unsigned x){
+    unsigned first_x = x >> 16; //isolate the left mid bits of x
+    x = x ^ first_x;
+
+    first_x = x >> 8;
+    x = x ^ first_x;
+
+    first_x = x >> 4;
+    x = x ^ first_x;
+
+    first_x = x >> 2;
+    x = x ^ first_x;
+
+    first_x = x >> 1;
+    x = x ^ first_x;
+
+    x = x & 1; //Get rid of all useless bit
+    return x;
 }
