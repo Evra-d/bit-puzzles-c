@@ -107,9 +107,10 @@ int int_shifts_are_arithmetic(){
  */
 unsigned srl(unsigned x, int k) {
     /* Perform shift arithmetically */
+    int xshift = 0;
     unsigned xsra = (int) x >> k;
-    int y = -1 // y = 0b1111...11111
-    int xshift = (sizeof(int) << 3) - 1 - k;
+    int y = -1; // y = 0b1111...11111
+    xshift = (sizeof(int) << 3) - 1 - k;
     y = y << xshift;
 
     return (unsigned) xsra & ~y;
@@ -168,4 +169,18 @@ int odd_ones(unsigned x){
 
     x = x & 1; //Get rid of all useless bit
     return x;
+}
+
+/* *Solution for CS:APP Exercice 2.68
+ * @brief Check if any of odd bit of x is 1
+ * return Mask with least signficant n bits set to 1
+    * Examples: n = 6 --> 0x2F, n = 17 --> 0x1FFFF
+    * Assume 1 <= n <= w
+*/
+int lower_one_mask(int n){
+    int mask = -1; //mask = 0b111...111111
+    mask = mask << n-1 << 1; //mask = 0b11...0000
+    mask = ~mask; //mask = 0b000...111
+
+    return mask;
 }
