@@ -171,7 +171,8 @@ int odd_ones(unsigned x){
     return x;
 }
 
-/* *Solution for CS:APP Exercice 2.68
+/* 
+ * Solution for CS:APP Exercice 2.68
  * @brief Check if any of odd bit of x is 1
  * return Mask with least signficant n bits set to 1
     * Examples: n = 6 --> 0x2F, n = 17 --> 0x1FFFF
@@ -183,4 +184,28 @@ int lower_one_mask(int n){
     mask = ~mask; //mask = 0b000...111
 
     return mask;
+}
+
+/*
+* Solution for CS:APP Exercice 2.70 
+* Return 1 when x can be represented as an n-bit, 2’s complement
+* number; 0 otherwise
+* Assume 1 <= n <= w
+*/
+int fits_bits(int x, int n){
+    //Let's search for the value of the n last bits. We could use the lower_one_mask(int n) logic
+    int y = x;
+    int mask = -1;
+    mask = mask << n-1 << 1;
+    mask = ~mask;
+
+    y &= mask;
+
+    //Let's shift it to the top in order to not miss it's two complement value on n bits
+    int number_of_shifts = (sizeof(int) << 3) - n;
+    y = y << number_of_shifts-1 << 1;
+    y = y >> number_of_shifts; //Using the sign bit extension
+    //x can hold on n bits if x = y ==> x - y = 0 ==> !(x - y) = 1.
+
+    return !(x - y);
 }
